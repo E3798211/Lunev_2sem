@@ -10,12 +10,13 @@ BIN=bin
 COV=cov
 
 SOURCES=$(SRC)/$(wildcard *.c)
+HEADERS=$(SRC)/dl_list.h
 OBJECTS=$(OBJ)/main.o $(OBJ)/dl_list.o
 BINARY= $(BIN)/main
 
 # Specific variables
-debug:    CFLAGS +=-DDEBUG
-coverage: CFLAGS +=-fprofile-arcs -ftest-coverage
+debug:    CFLAGS +=-DDEBUG -DINVALID_CALLOC
+coverage: CFLAGS +=-fprofile-arcs -ftest-coverage -DINVALID_CALLOC
 coverage: LFLAGS +=-lgcov --coverage
 
 # Check if directories created before any build
@@ -23,6 +24,8 @@ coverage: LFLAGS +=-lgcov --coverage
 
 # Targets
 all: directories debug
+
+degug release coverage: $(HEADERS)
 
 debug release: $(OBJECTS)
 	$(CC) $(LFLAGS) -o $(BINARY) $^
