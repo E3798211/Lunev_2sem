@@ -15,7 +15,8 @@ OBJECTS=$(OBJ)/main.o $(OBJ)/dl_list.o
 BINARY= $(BIN)/main
 
 # Specific variables
-debug:    CFLAGS +=-DDEBUG -DINVALID_CALLOC
+debug:		CFLAGS +=-DDEBUG
+debug_full:	CFLAGS +=-DDEBUG -DINVALID_CALLOC
 coverage: CFLAGS +=-fprofile-arcs -ftest-coverage -DINVALID_CALLOC
 coverage: LFLAGS +=-lgcov --coverage
 
@@ -25,9 +26,9 @@ coverage: LFLAGS +=-lgcov --coverage
 # Targets
 all: directories debug
 
-degug release coverage: $(HEADERS)
+debug debug_full release coverage: $(HEADERS)
 
-debug release: $(OBJECTS)
+debug debug_full release: $(OBJECTS)
 	$(CC) $(LFLAGS) -o $(BINARY) $^
 
 coverage: $(OBJECTS)
