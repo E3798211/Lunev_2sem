@@ -38,6 +38,21 @@ list_t* insert_after(list_t* const prev, list_t* const to_insert)
     return to_insert;
 }
 
+list_t* delete_node(list_t* to_delete)
+{
+    if (!to_delete)             return NULL;
+
+    if (to_delete->prev)
+        to_delete->prev->next = to_delete->next;
+    if (to_delete->next)
+        to_delete->next->prev = to_delete->prev;
+
+    list_t* next = to_delete->next;
+    free(to_delete);
+
+    return next;
+}
+
 void print_list(list_t* const head)
 {
     size_t i = 0;

@@ -42,6 +42,11 @@ list_t* set_value(list_t* const node, data_t new_value);
 list_t* insert_after(list_t* const prev, list_t* const to_insert);
 
 /*
+    Returns pointer to the next element or NULL in case of error
+ */
+list_t* delete_node(list_t* to_delete);
+
+/*
     Returns EXIT_FAILURE in case of error.
  */
 void print_list(list_t* const head);
