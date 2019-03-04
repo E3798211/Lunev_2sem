@@ -53,6 +53,18 @@ list_t* delete_node(list_t* to_delete)
     return next;
 }
 
+void delete_list(list_t* head)
+{
+    if (head->prev) head->prev->next = NULL;
+
+    while(head)
+    {
+        list_t* next = head->next;
+        free(head);
+        head = next;
+    }
+}
+
 void print_list(list_t* const head)
 {
     size_t i = 0;

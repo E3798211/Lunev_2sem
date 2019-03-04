@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "dl_list.h"
 
-#define N_LISTS 100
+#define N_LISTS 1000
 
 int main()
 {
@@ -27,7 +27,9 @@ int main()
             DBG_MSG("fuck\n");
     }
 
-    while((first = delete_node(first)));
+    delete_list(lists[10]);
+
+//    while((first = delete_node(first)));
 //    for(size_t i = 0; i < N_LISTS; i++)
 //        set_value(lists[i], (int)i);
 //
@@ -35,11 +37,13 @@ int main()
 //    while(!lists[i++]); i--;
 //
 //    printf("================    start printing [%lu]\n", i);
-//    print_list(lists[i]);
+    print_list(lists[0]);
 //    printf("================      end printing\n");
 
 //    for(size_t i = 0; i < N_LISTS; i++)
 //        free(lists[i]);
+
+    delete_list(lists[0]);
 
     return 0;
 }

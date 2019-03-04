@@ -49,6 +49,11 @@ list_t* delete_node(list_t* to_delete);
 /*
     Returns EXIT_FAILURE in case of error.
  */
+void delete_list(list_t* head);
+
+/*
+    Returns EXIT_FAILURE in case of error.
+ */
 void print_list(list_t* const head);
 
 #endif // DL_LIST_H_INCLUDED
