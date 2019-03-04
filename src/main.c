@@ -4,6 +4,12 @@
 
 #define N_LISTS 1000
 
+void inner(list_t* node, va_list arg)
+{
+    int x = va_arg(arg, int);
+    printf("%d\n", x + node->value);
+}
+
 int main()
 {
     srand(time(NULL));
@@ -16,8 +22,13 @@ int main()
         if (!lists[i])
             DBG_MSG("%2lu create_node() failed\n", i);
     }
+   
+    for(size_t i = 0; i < N_LISTS; i++)
+    {
+        set_value(lists[i], i);
+    }
     
-    list_t* first = lists[0];
+//    list_t* first = lists[0];
     
     for(size_t i = 0; i < N_LISTS - 1; i++)
     {
@@ -28,6 +39,8 @@ int main()
     }
 
     delete_list(lists[10]);
+
+    for_each(lists[0], NULL, inner, 5);
 
 //    while((first = delete_node(first)));
 //    for(size_t i = 0; i < N_LISTS; i++)
