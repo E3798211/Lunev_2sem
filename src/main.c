@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "dl_list.h"
 
-#define N_LISTS 1000
+#define N_LISTS 30
 
 void inner(list_t* node, va_list arg)
 {
@@ -15,47 +15,29 @@ int main()
     srand(time(NULL));
     
     list_t* lists[N_LISTS] = {};
-
     for(size_t i = 0; i < N_LISTS; i++)
-    {
-        lists[i] = create_node();
-        if (!lists[i])
-            DBG_MSG("%2lu create_node() failed\n", i);
-    }
+        while(!(lists[i] = create_node()))
+            DBG_MSG("Failed to create node\n");
    
     for(size_t i = 0; i < N_LISTS; i++)
-    {
         set_value(lists[i], i);
-    }
-    
-//    list_t* first = lists[0];
-    
+     
     for(size_t i = 0; i < N_LISTS - 1; i++)
-    {
-        if (!lists[i])    continue;
-        if (!lists[i+1])  continue;
         if (!insert_after(lists[i], lists[i+1]))
-            DBG_MSG("fuck\n");
-    }
+            DBG_MSG("Failed to insert\n");
 
-    delete_list(lists[10]);
+    list_t *node1, *node2;
+    if (!(node1 = create_node())) DBG_MSG("Node1 failed\n");
+    if (!(node2 = create_node())) DBG_MSG("Node2 failed\n");
+
+    if (!(insert_after(lists[10], node1))) DBG_MSG("Node1 insert failed\n");
+    if (!(insert_after(lists[20], node2))) DBG_MSG("Node2 insert failed\n");
+
+    delete_node(lists[N_LISTS - 1]);
+    delete_node(lists[25]);
 
     for_each(lists[0], NULL, inner, 5);
-
-//    while((first = delete_node(first)));
-//    for(size_t i = 0; i < N_LISTS; i++)
-//        set_value(lists[i], (int)i);
-//
-//    size_t i = 0;
-//    while(!lists[i++]); i--;
-//
-//    printf("================    start printing [%lu]\n", i);
     print_list(lists[0]);
-//    printf("================      end printing\n");
-
-//    for(size_t i = 0; i < N_LISTS; i++)
-//        free(lists[i]);
-
     delete_list(lists[0]);
 
     return 0;

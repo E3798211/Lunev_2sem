@@ -3,7 +3,6 @@
 
 #ifdef    INVALID_CALLOC     
     #pragma message ( "Using INVALID_CALLOC" )
-    #include <time.h>
     static void* invalid_calloc(size_t nmemb, size_t size)
     {
         return ((rand() % 2)? calloc(nmemb, size) : NULL);

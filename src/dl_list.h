@@ -2,17 +2,24 @@
 #ifndef   DL_LIST_H_INCLUDED
 #define   DL_LIST_H_INCLUDED
 
-#ifdef    DEBUG
-    #pragma message( "Using DEBUG" )
-    #define DBG_MSG(...) fprintf(stderr, __VA_ARGS__)
-#else
-    #define DBG_MSG(...) ;
-#endif // DEBUG
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <time.h>
+
+#ifdef    DEBUG
+    #pragma message( "Using DEBUG" )
+    #define DBG_MSG(...)                \
+    do {                                \
+        fprintf(stderr, __VA_ARGS__);   \
+    } while(0)                          
+#else
+    #define DBG_MSG(...)                \
+    do {                                \
+                                        \
+    }while(0)                           
+#endif // DEBUG
 
 // =================================
 
