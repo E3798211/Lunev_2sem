@@ -48,6 +48,7 @@ $(OBJ)/%.o: $(SRC)/%.c
 clean:
 	rm -rf $(OBJ)
 	rm -rf $(COV)
+	rm -rf *.gcno
 
 directories:
 	if [ ! -d "$(OBJ)" ]; then mkdir "$(OBJ)"; fi
