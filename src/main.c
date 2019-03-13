@@ -21,6 +21,8 @@ int main()
    
     for(size_t i = 0; i < N_LISTS; i++)
         set_value(lists[i], i);
+    for(size_t i = 0; i < N_LISTS; i++)
+        get_value(lists[i]);
      
     for(size_t i = 0; i < N_LISTS - 1; i++)
         if (!insert_after(lists[i], lists[i+1]))

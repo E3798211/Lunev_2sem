@@ -43,6 +43,8 @@ list_t* create_node();
 
 list_t* set_value(list_t* const node, data_t new_value);
 
+data_t  get_value(const list_t* const node);
+
 /*
     Returns pointer to the next element or NULL in case of error
  */

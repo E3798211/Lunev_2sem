@@ -23,6 +23,11 @@ list_t* set_value(list_t* const node, data_t new_value)
     return node;
 }
 
+data_t  get_value(const list_t* const node)
+{
+    return node->value;
+}
+
 list_t* insert_after(list_t* const prev, list_t* const to_insert)
 {
     if (!to_insert || !prev)    return NULL;
