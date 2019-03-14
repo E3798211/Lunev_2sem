@@ -25,15 +25,15 @@ int main()
         get_value(lists[i]);
      
     for(size_t i = 0; i < N_LISTS - 1; i++)
-        if (!insert_after(lists[i], lists[i+1]))
-            DBG_MSG("Failed to insert\n");
+        if (!append(lists[i], lists[i+1]))
+            DBG_MSG("Failed to append\n");
 
     list_t *node1, *node2;
     if (!(node1 = create_node())) DBG_MSG("Node1 failed\n");
     if (!(node2 = create_node())) DBG_MSG("Node2 failed\n");
 
-    if (!(insert_after(lists[10], node1))) DBG_MSG("Node1 insert failed\n");
-    if (!(insert_after(lists[20], node2))) DBG_MSG("Node2 insert failed\n");
+    if (!(append(lists[10], node1))) DBG_MSG("Node1 append failed\n");
+    if (!(insert(lists[20], node2))) DBG_MSG("Node2 insert failed\n");
 
     printf("Elem with 5 is %p\n", find(lists[0], 5));
     printf("Elem with 123 is %p\n", find(lists[0], 123));

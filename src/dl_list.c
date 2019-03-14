@@ -28,7 +28,7 @@ data_t  get_value(const list_t* const node)
     return node->value;
 }
 
-list_t* insert_after(list_t* const prev, list_t* const to_insert)
+list_t* append(list_t* const prev, list_t* const to_insert)
 {
     if (!to_insert || !prev)    return NULL;
 
@@ -38,6 +38,20 @@ list_t* insert_after(list_t* const prev, list_t* const to_insert)
     to_insert->next = next;
 
     if (next)   next->prev = to_insert;
+
+    return to_insert;
+}
+
+list_t* insert(list_t* const next, list_t* const to_insert)
+{ 
+    if (!to_insert || !next)    return NULL;
+    
+    list_t* prev = next->prev;
+    next->prev   = to_insert;
+    to_insert->prev = prev;
+    to_insert->next = next;
+
+    if (prev)   prev->next = to_insert;
 
     return to_insert;
 }

@@ -56,10 +56,11 @@ list_t* delete_node(list_t* to_delete);
 void delete_list(list_t* head);
 
 /*
-    Returns pointer to the inserted element.
+    Return pointer to the inserted element.
     Return NULL in case of error.
  */
-list_t* insert_after(list_t* const prev, list_t* const to_insert);
+list_t* append(list_t* const prev, list_t* const to_insert);
+list_t* insert(list_t* const next, list_t* const to_insert);
 
 /*
     Returns EXIT_FAILURE in case of error.
