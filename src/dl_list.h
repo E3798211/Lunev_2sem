@@ -73,5 +73,10 @@ void print_list(list_t* const head);
 void for_each(list_t* const from, const list_t* const to,
               void (*to_apply)(list_t* node, va_list args), ...);
 
+/*
+    Return NULL if no element found
+ */
+list_t* find(list_t* head, data_t value);
+
 #endif // DL_LIST_H_INCLUDED
 

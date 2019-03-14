@@ -88,3 +88,13 @@ void for_each(list_t* const from, const list_t* const to,
     }
 }
 
+list_t* find(list_t* head, data_t value)
+{
+    while(head)
+    {
+        if (head->value == value)   return head;
+        head = head->next;
+    }
+    return NULL;
+}
+

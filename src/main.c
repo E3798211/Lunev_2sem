@@ -35,6 +35,9 @@ int main()
     if (!(insert_after(lists[10], node1))) DBG_MSG("Node1 insert failed\n");
     if (!(insert_after(lists[20], node2))) DBG_MSG("Node2 insert failed\n");
 
+    printf("Elem with 5 is %p\n", find(lists[0], 5));
+    printf("Elem with 123 is %p\n", find(lists[0], 123));
+
     delete_node(lists[N_LISTS - 1]);
     delete_node(lists[25]);
 
