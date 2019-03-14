@@ -19,49 +19,56 @@ list_t* create_node()
 
 int set_value(list_t* const node, data_t new_value)
 {
-    if (!node)                  return EXIT_FAILURE;
+    if (!node)
+        return EXIT_FAILURE;
     node->value = new_value;
     return EXIT_SUCCESS;
 }
 
 int get_value(const list_t* const node, data_t* const value)
 {
-    if (!node)                  return EXIT_FAILURE;
+    if (!node)
+        return EXIT_FAILURE;
     *value = node->value;
     return EXIT_SUCCESS;
 }
 
-list_t* append(list_t* const prev, list_t* const to_insert)
+list_t* insert_after (list_t* const prev, list_t* const to_insert)
 {
-    if (!to_insert || !prev)    return NULL;
+    if (!to_insert || !prev)
+        return NULL;
 
     list_t* next = prev->next;
     prev->next   = to_insert;
     to_insert->prev = prev;
     to_insert->next = next;
 
-    if (next)   next->prev = to_insert;
+    if (next)   
+        next->prev = to_insert;
 
     return to_insert;
 }
 
-list_t* insert(list_t* const next, list_t* const to_insert)
+list_t* insert_before(list_t* const next, list_t* const to_insert)
 { 
-    if (!to_insert || !next)    return NULL;
+    if (!to_insert || !next)
+        return NULL;
     
     list_t* prev = next->prev;
     next->prev   = to_insert;
     to_insert->prev = prev;
     to_insert->next = next;
 
-    if (prev)   prev->next = to_insert;
+    if (prev)
+        prev->next = to_insert;
 
     return to_insert;
 }
 
 list_t* delete_node(list_t* to_delete)
 {
-    if (!to_delete)             return NULL;
+    if (!to_delete)
+        return NULL;
 
     if (to_delete->prev)
         to_delete->prev->next = to_delete->next;
@@ -76,7 +83,8 @@ list_t* delete_node(list_t* to_delete)
 
 void delete_list(list_t* head)
 {
-    if (head->prev) head->prev->next = NULL;
+    if (head->prev) 
+        head->prev->next = NULL;
 
     while(head)
     {
