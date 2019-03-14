@@ -78,9 +78,14 @@ void print_list(list_t* const head);
 /*
     Applies function to_apply() to each node including "from"
     and excluding "to". To iterate to the end, set "to" to NULL.
+
+    Returns error code.
+
+    Function to_apply() must return 0 if no further iteration needed,
+    1 otherwise.
  */
-void for_each(list_t* const from, const list_t* const to,
-              void (*to_apply)(list_t* node, va_list args), ...);
+int for_each(list_t* const from, const list_t* const to,
+              int (*to_apply)(list_t* node, void* args), void* args);
 
 /*
     Return NULL if no element found

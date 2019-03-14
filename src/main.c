@@ -4,10 +4,13 @@
 
 #define N_LISTS 30
 
-void inner(list_t* node, va_list arg)
+int inner(list_t* node, void* arg)
 {
-    int x = va_arg(arg, int);
-    printf("%d\n", x + node->value);
+    printf("%d\n", node->value);
+    if (node->value == 5)
+        return 1;
+    else
+        return 0;
 }
 
 int main()
@@ -42,7 +45,7 @@ int main()
     delete_node(lists[N_LISTS - 1]);
     delete_node(lists[25]);
 
-    for_each(lists[0], NULL, inner, 5);
+    for_each(lists[0], NULL, inner, NULL);
     print_list(lists[0]);
     delete_list(lists[0]);
 
@@ -52,7 +55,7 @@ int main()
     insert_after (NULL, NULL);
     insert_before(NULL, NULL);
     delete_node(NULL);
-
+    for_each(NULL, NULL, NULL, NULL);
     return 0;
 }
 

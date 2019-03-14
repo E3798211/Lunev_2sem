@@ -101,16 +101,17 @@ void print_list(list_t* const head)
         printf("[%4lu] "DATA_T_FORMAT"\n", i++, cur->value);
 }
 
-void for_each(list_t* const from, const list_t* const to,
-              void (*to_apply)(list_t*, va_list), ...)
+int for_each(list_t* const from, const list_t* const to,
+              int (*to_apply)(list_t* node, void* args), void* args)
 {
-    for(list_t* node = from; node != to; node = node->next)
-    {
-        va_list  transmitted_args;
-        va_start(transmitted_args, to_apply);
-        to_apply(node, transmitted_args);
-        va_end  (transmitted_args);
-    }
+    if (!from)
+        return EXIT_FAILURE;
+
+    for(list_t* node = from; node != to; node = node->next) 
+        if (to_apply(node, args))
+            break;
+
+    return EXIT_SUCCESS;
 }
 
 list_t* find(list_t* head, data_t value)
