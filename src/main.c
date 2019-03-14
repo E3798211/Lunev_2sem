@@ -18,11 +18,12 @@ int main()
     for(size_t i = 0; i < N_LISTS; i++)
         while(!(lists[i] = create_node()))
             DBG_MSG("Failed to create node\n");
-   
+    
+    data_t x = 0;
     for(size_t i = 0; i < N_LISTS; i++)
         set_value(lists[i], i);
     for(size_t i = 0; i < N_LISTS; i++)
-        get_value(lists[i]);
+        get_value(lists[i], &x);
      
     for(size_t i = 0; i < N_LISTS - 1; i++)
         if (!append(lists[i], lists[i+1]))

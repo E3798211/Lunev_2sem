@@ -17,15 +17,18 @@ list_t* create_node()
     return (list_t*)calloc(1, sizeof(list_t));
 }
 
-list_t* set_value(list_t* const node, data_t new_value)
+int set_value(list_t* const node, data_t new_value)
 {
+    if (!node)                  return EXIT_FAILURE;
     node->value = new_value;
-    return node;
+    return EXIT_SUCCESS;
 }
 
-data_t  get_value(const list_t* const node)
+int get_value(const list_t* const node, data_t* const value)
 {
-    return node->value;
+    if (!node)                  return EXIT_FAILURE;
+    *value = node->value;
+    return EXIT_SUCCESS;
 }
 
 list_t* append(list_t* const prev, list_t* const to_insert)

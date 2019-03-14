@@ -41,9 +41,17 @@ typedef struct list
  */
 list_t* create_node();
 
-list_t* set_value(list_t* const node, data_t new_value);
+/*
+    Returns EXIT_FAILURE in case node==NULL
+ */
+int set_value(list_t* const node, data_t new_value);
 
-data_t  get_value(const list_t* const node);
+/*
+    Returns EXIT_FAILURE in case node==NULL
+    Stores node's content in <value> parameter, so it must be
+    a valid pointer to pre-allocated memory.
+ */
+int get_value(const list_t* const node, data_t* const value);
 
 /*
     Returns pointer to the next element or NULL in case of error
