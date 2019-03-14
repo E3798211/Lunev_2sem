@@ -97,5 +97,7 @@ list_t* find(list_t* head, data_t value);
  */
 int divide(list_t** first, list_t** second, data_t stop_value);
 
+int merge(list_t* first, list_t* second);
+
 #endif // DL_LIST_H_INCLUDED
 

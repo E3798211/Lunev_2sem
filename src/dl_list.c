@@ -144,6 +144,21 @@ int divide(list_t** first, list_t** second, data_t stop_value)
     return EXIT_FAILURE;
 }
 
+int merge(list_t* first, list_t* second)
+{
+    if (!first)
+        return EXIT_FAILURE;
+
+    list_t* cur = first;
+    while(cur->next)
+        cur = cur->next;
+
+    cur->next = second;
+    if (second)
+        second->prev = cur;
+    
+    return EXIT_SUCCESS;
+}
 
 
 

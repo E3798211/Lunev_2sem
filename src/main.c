@@ -52,16 +52,15 @@ int main()
     first = lists[0];
 
     divide(&first, &second, 12345);
-    printf("hello\n");
     divide(&first, &second, 10);
-    printf("hello\n");
-
-    printf("fir = %p\nsec = %p\n", first, second);
-
-    delete_list(first);
-    delete_list(second);
     
-    // delete_list(lists[0]);
+    merge(first, NULL);
+    merge(first, second);
+
+    // delete_list(first);
+    // delete_list(second);
+    
+    delete_list(lists[0]);
 
     
     set_value(NULL, 0);
@@ -70,6 +69,8 @@ int main()
     insert_before(NULL, NULL);
     delete_node(NULL);
     for_each(NULL, NULL, NULL, NULL);
+    merge(NULL, NULL);
+
     return 0;
 }
 
