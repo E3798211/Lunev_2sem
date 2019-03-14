@@ -53,6 +53,7 @@ int main()
 
     divide(&first, &second, 12345);
     divide(&first, &second, 10);
+    insert_before(first, second);
     
     merge(first, NULL);
     merge(first, second);

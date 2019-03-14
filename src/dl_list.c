@@ -53,6 +53,9 @@ list_t* insert_before(list_t* const next, list_t* const to_insert)
 { 
     if (!to_insert || !next)
         return NULL;
+
+    if (!next->prev)    // inserting before head
+        return NULL;
     
     list_t* prev = next->prev;
     next->prev   = to_insert;
