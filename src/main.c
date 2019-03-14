@@ -47,7 +47,21 @@ int main()
 
     for_each(lists[0], NULL, inner, NULL);
     print_list(lists[0]);
-    delete_list(lists[0]);
+    
+    list_t *first, *second;
+    first = lists[0];
+
+    divide(&first, &second, 12345);
+    printf("hello\n");
+    divide(&first, &second, 10);
+    printf("hello\n");
+
+    printf("fir = %p\nsec = %p\n", first, second);
+
+    delete_list(first);
+    delete_list(second);
+    
+    // delete_list(lists[0]);
 
     
     set_value(NULL, 0);

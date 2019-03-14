@@ -124,3 +124,29 @@ list_t* find(list_t* head, data_t value)
     return NULL;
 }
 
+int divide(list_t** first, list_t** second, data_t stop_value)
+{
+    list_t* cur = *first;
+    while(cur)
+    {
+        if (cur->value == stop_value)
+        {
+            *second = cur->next;
+            cur->next = NULL;
+
+            if (*second)
+                (*second)->prev = NULL;
+
+            return EXIT_SUCCESS;
+        }
+        cur = cur->next;
+    }
+    return EXIT_FAILURE;
+}
+
+
+
+
+
+
+

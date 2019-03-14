@@ -92,5 +92,10 @@ int for_each(list_t* const from, const list_t* const to,
  */
 list_t* find(list_t* head, data_t value);
 
+/*
+    Returns error code.
+ */
+int divide(list_t** first, list_t** second, data_t stop_value);
+
 #endif // DL_LIST_H_INCLUDED
 
